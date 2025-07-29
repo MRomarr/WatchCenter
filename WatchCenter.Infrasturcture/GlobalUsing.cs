@@ -1,0 +1,11 @@
+﻿global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore;
+global using WatchCenter.Domain.Entites;
+global using WatchCenter.Application.Interface.Repositores;
+global using WatchCenter.Application.Interface.services;
+global using WatchCenter.Infrasturcture.Presistence;
+global using WatchCenter.Infrasturcture.Repositores;
+global using WatchCenter.Infrasturcture.Services.EmailService;
+global using WatchCenter.Infrasturcture.Services.TokenProvider;
+global using System.Text;
+global using Microsoft.AspNetCore.Identity;

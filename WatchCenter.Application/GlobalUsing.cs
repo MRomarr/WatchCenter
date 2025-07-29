@@ -1,0 +1,9 @@
+﻿global using AutoMapper;
+global using System.ComponentModel.DataAnnotations;
+global using WatchCenter.Domain.Entites;
+global using WatchCenter.Application.Interface.services;
+global using WatchCenter.Application.common;
+global using WatchCenter.Application.DTOs;
+global using WatchCenter.Application.services;
+global using WatchCenter.Application.Interface.Repositores;
+global using Microsoft.AspNetCore.Http;
