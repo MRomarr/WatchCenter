@@ -1,6 +1,6 @@
 # 📌 WatchCenter
 
-WatchCenter is a **.NET Core Clean Architecture** backend project for managing movies, series, and related content efficiently. It is built with scalability, maintainability, and testability in mind.
+WatchCenter is a **.NET Core Clean Architecture** backend project for managing movies, series, and related content efficiently. It is built with scalability and  maintainability
 
 ---
 
@@ -21,8 +21,8 @@ WatchCenter is a **.NET Core Clean Architecture** backend project for managing m
 This project follows **Clean Architecture** with the following layers:
 - WatchCenter.API # Entry point for the application (controllers, endpoints, middleware)
 - WatchCenter.Application # Business logic, DTOs, service and interfaces
-─ WatchCenter.Domain # Core entities
-─ WatchCenter.Infrastructure # Data access (EF Core, repositories), external services
+- WatchCenter.Domain # Core entities
+- WatchCenter.Infrastructure # Data access (EF Core, repositories), external services
 
 
 ---
