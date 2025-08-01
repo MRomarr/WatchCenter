@@ -1,6 +1,4 @@
-﻿
-using Microsoft.Extensions.DependencyInjection;
-using WatchCenter.Application.Interface.services;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace WatchCenter.Application
 {

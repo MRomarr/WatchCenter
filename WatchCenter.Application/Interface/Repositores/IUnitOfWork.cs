@@ -6,6 +6,7 @@ namespace WatchCenter.Application.Interface.Repositores
         IRepository<Genre> Genres { get; }
         IRepository<Content> Contents { get; }
         IRepository<Movie > Movies { get; }
+        IRepository<Season> seasons { get; }
         Task<bool> SaveAsync();
     }
 }

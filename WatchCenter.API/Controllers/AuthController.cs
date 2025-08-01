@@ -11,7 +11,6 @@
         }
 
 
-
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto dto)
         {
@@ -34,6 +33,9 @@
             return Ok(result.Message);
 
         }
+
+
+
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto dto)
@@ -60,6 +62,9 @@
                 Data= result.Data
             });
         }
+
+
+
 
         [HttpPost("confirm-email")]
         public async Task<IActionResult> ConfirmEmail([FromQuery] string userId, [FromQuery] string token)
@@ -89,6 +94,9 @@
             });
         }
 
+
+
+
         [HttpPost("refresh-token")]
         [Authorize]
         public async Task<IActionResult> RefreshToken([FromBody] string token)
@@ -115,6 +123,9 @@
                 Data = result.Data
             });
         }
+
+
+
 
         [HttpPost("logout")]
         [Authorize]

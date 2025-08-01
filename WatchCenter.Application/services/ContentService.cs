@@ -4,22 +4,22 @@ namespace WatchCenter.Application.services
     internal class ContentService : IContentService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IFormFileService _formFileService;
         private readonly IMapper _mapper;
 
-        public ContentService(IUnitOfWork unitOfWork, IMapper mapper)
+        public ContentService(IUnitOfWork unitOfWork, IMapper mapper, IFormFileService formFileService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _formFileService = formFileService;
         }
-
 
         public async Task<Result<ContentDto>> GetByIdAsync(string id)
         {
             // get content 
-            var content = await _unitOfWork.Contents.GetByIdAsync(id,
-                c => c.Movie,
-                c => c.Series,
-                c => c.Series.Seasons);
+            var content = await _unitOfWork.Contents.GetByIdAsync(id);
+
+            // check if content null
             if (content == null)
             {
                 return Result<ContentDto>.Failure("Content not found.");
@@ -66,14 +66,41 @@ namespace WatchCenter.Application.services
                 return Result<ContentDto>.Failure("Content with the same title already exists.");
             }
 
-            
+            //check if genre exist
+            if (await _unitOfWork.Genres.GetByIdAsync(dto.GenreId) is null)
+                return Result<ContentDto>.Failure("Genre Not Found");
+
             // map CreateContentDto to Content
             var content = _mapper.Map<Content>(dto);
             content.UserId = UserId;
+            if (dto.Trailer is not null)
+            {
+                var trailerUrl = await _formFileService.SaveFileAsync(dto.Trailer,"Trailer");
+                if (trailerUrl != null)
+                {
+                    content.TrailerUrl = trailerUrl;
+                }
+            }
+            if (dto.Poster is not null)
+            {
+                var posterUrl = await _formFileService.SaveFileAsync(dto.Poster, "Posters");
+                if (posterUrl != null)
+                {
+                    content.PosterUrl = posterUrl;
+                }
+            }
+            if (dto.Type == 1)
+            {
+                var series = new Series()
+                {
+                    ContentId = content.Id
+                };
+            }
 
             // add content to repository
             await _unitOfWork.Contents.AddAsync(content);
-          
+
+            
             // save changes
             var  result = await _unitOfWork.SaveAsync();
             if (!result)
@@ -118,7 +145,6 @@ namespace WatchCenter.Application.services
 
 
         }
-
         public async Task<Result> DeleteAsync(string id)
         {
             var content = await _unitOfWork.Contents.GetByIdAsync(id,c=>c.Movie);

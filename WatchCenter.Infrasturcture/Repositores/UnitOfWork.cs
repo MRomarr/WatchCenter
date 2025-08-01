@@ -8,6 +8,7 @@ namespace WatchCenter.Infrasturcture.Repositores
         private IRepository<Genre> _Genre;
         private IRepository<Content> _Content;
         private IRepository<Movie> _Movie;
+        private IRepository<Season> _Season;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -17,6 +18,9 @@ namespace WatchCenter.Infrasturcture.Repositores
         public IRepository<Genre> Genres => _Genre ??= new GenericRepository<Genre>(_context);
         public IRepository<Content> Contents => _Content ??= new GenericRepository<Content>(_context);
         public IRepository<Movie> Movies => _Movie ??= new GenericRepository<Movie>(_context);
+
+        public IRepository<Season> seasons => _Season?? new GenericRepository<Season>(_context);
+
         //----
         public async Task<bool> SaveAsync()
         {

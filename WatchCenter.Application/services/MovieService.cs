@@ -61,5 +61,20 @@ namespace WatchCenter.Application.services
 
             return Result<ICollection<ContentDto>>.Success(contentdto);
         }
+
+        public async Task<Result<MovieDto>> GetByIdAsync(string id)
+        {
+            // get movie frm db
+            var movie = await _unitOfWork.Contents.GetByIdAsync(id,m=>m.Movie);
+
+            // check if movie null
+            if (movie is null)
+                return Result<MovieDto>.Failure("Movie not found");
+
+            var  movieDto = _mapper.Map<MovieDto>(movie);
+
+            return Result<MovieDto>.Success(movieDto);
+
+        }
     }
 }

@@ -10,6 +10,8 @@
             _movieService = movieService;
         }
 
+
+
         [HttpGet]
         public async Task<IActionResult> GetMoviesAsync()
         {
@@ -17,6 +19,9 @@
             
             return Ok(result.Data);
         }
+
+
+
 
         [HttpPost]
         [Authorize(Roles =RoleHelper.Admin)]

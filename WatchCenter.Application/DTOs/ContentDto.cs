@@ -9,8 +9,5 @@ namespace WatchCenter.Application.DTOs
         public string PosterUrl { get; set; }
         public string TrailerUrl { get; set; }
         public int Type { get; set; }
-
-        public MovieDto? Movie { get; set; }
-        public SeriesDto? Series { get; set; }
     }
 }

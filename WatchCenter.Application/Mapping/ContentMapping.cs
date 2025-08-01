@@ -9,17 +9,15 @@ namespace WatchCenter.Application.Mapping
         {
             CreateMap<Content, ContentDto>()
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => (int)src.Type));
-            CreateMap<Movie, MovieDto>();
-             
-            CreateMap<Series, SeriesDto>();
-            CreateMap<Season, SeasonDto>();
-            CreateMap<Episode, EpisodeDto>();
 
             CreateMap<CreateContentDto, Content>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.GenreId, opt => opt.MapFrom(src=>src.GenreId))
+                .ForMember(dest => dest.Title, opt => opt.MapFrom(src=>src.Title))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src=>src.Description))
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => (ContentType)src.Type));
-
-            CreateMap<UpdateContentDto, Content>();
+            
+        CreateMap<UpdateContentDto, Content>();
             
         }
     }

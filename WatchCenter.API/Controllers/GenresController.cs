@@ -11,6 +11,8 @@
             _genreService = genreService;
         }
 
+
+
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
@@ -18,6 +20,9 @@
 
             return Ok(result.Data);
         }
+
+
+
 
         [HttpPost]
         [Authorize(Roles = RoleHelper.Admin)]
@@ -37,6 +42,9 @@
             return Ok(result.Data);
         }
 
+
+
+
         [HttpPut]
         [Authorize(Roles = RoleHelper.Admin)]
         public async Task<IActionResult> UpdateAsync([FromBody] UpdateGenreDto dto)
@@ -55,6 +63,9 @@
             return Ok(result.Data);
         }
 
+
+
+
         [HttpDelete("{id}")]
         [Authorize(Roles = RoleHelper.Admin)]
         public async Task<IActionResult> DeleteAsync(string id)
@@ -72,6 +83,9 @@
 
             return Ok(result.Message);
         }
+
+
+
 
         [HttpGet("{id}/contents")]
         [Authorize(Roles = RoleHelper.Admin)]
