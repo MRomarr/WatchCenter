@@ -1,6 +1,6 @@
 # 📌 WatchCenter
 
-WatchCenter is a **.NET Core Clean Architecture** backend project for managing movies, series, and related content efficiently. It is built with scalability and  maintainability
+WatchCenter is a .NET Core Clean Architecture** backend project for managing movies, series, and related content efficiently. It is built with scalability and  maintainability
 
 ---
 
