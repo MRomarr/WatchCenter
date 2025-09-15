@@ -11,21 +11,11 @@ WatchCenter is a **.NET Core Clean Architecture** backend project for managing m
 - 🔐 **Authentication & Authorization** (JWT-based).  
 - 🗂 **Separation of Concerns** using Clean Architecture principles.  
 - 📄 **RESTful API** for frontend or mobile applications.  
-- 🛠 **Dependency Injection** for modular design.  
-- 🧪 Unit test-ready architecture.  
+- 🛠 **Dependency Injection** for modular design.    
 
 ---
 
-## 🏗 Project Structure
 
-This project follows **Clean Architecture** with the following layers:
-- WatchCenter.API # Entry point for the application (controllers, endpoints, middleware)
-- WatchCenter.Application # Business logic, DTOs, service and interfaces
-- WatchCenter.Domain # Core entities
-- WatchCenter.Infrastructure # Data access (EF Core, repositories), external services
-
-
----
 
 ## 🛠 Technologies Used
 
